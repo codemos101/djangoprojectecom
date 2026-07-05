@@ -1,0 +1,1606 @@
+/* ===================================
+   LUXURY MINIMALIST E-COMMERCE THEME
+   Sophisticated Aquatic-Inspired Palette
+   Dark-Mode-First Aesthetic
+   =================================== */
+
+:root {
+  /* Commercial-Grade Luxury Palette - Starbucks Dark Aesthetic */
+  --base: #15242b;
+  --card-bg: #250f08;
+  --card-border: #8c6540;
+  --text-primary: #e0cbb1;
+  --text-secondary: #b8a98a;
+  --button: #c4986e;
+  --button-hover: #d4a876;
+  --button-dark: #a87d54;
+  
+  /* Derived colors */
+  --accent-light: #e8d7c3;
+  --accent-muted: #9a8b78;
+  --dark-overlay: #0a0f14;
+  
+  /* Shadows - Luxury depth */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 16px rgba(196, 152, 110, 0.2);
+  
+  /* Typography */
+  --font-base: 1rem;
+  --font-sm: 0.875rem;
+  --font-md: 1.1rem;
+  --font-lg: 1.5rem;
+  --font-xl: 2rem;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+}
+
+/* Light Mode - Warm Luxury */
+html[data-theme="light"] {
+  --base: #f5f0eb;
+  --card-bg: #ede8e2;
+  --card-border: #c9b5a3;
+  --text-primary: #2d2620;
+  --text-secondary: #6b5d50;
+  --button: #c4986e;
+  --button-hover: #d4a876;
+  --button-dark: #a87d54;
+  --accent-light: #d4c5b9;
+  --accent-muted: #8b7d73;
+  
+  --shadow-sm: 0 2px 8px rgba(45, 38, 32, 0.1);
+  --shadow-md: 0 4px 16px rgba(45, 38, 32, 0.15);
+  --shadow-lg: 0 8px 32px rgba(45, 38, 32, 0.2);
+  --shadow-glow: 0 0 16px rgba(196, 152, 110, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--base);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ===================================
+   NAVBAR - Minimalist Luxury
+   =================================== */
+
+#navbar {
+  background-color: var(--base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--button-hover);
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 4px;
+  position: relative;
+}
+
+.navbar-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--button), var(--button-hover));
+  transition: width 0.3s ease;
+}
+
+.navbar-nav a:hover {
+  color: var(--button);
+}
+
+.navbar-nav a:hover::after {
+  width: 100%;
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  max-width: 350px;
+}
+
+.navbar-input {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 4px 0 0 4px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-input:focus {
+  background-color: var(--base);
+  border-color: var(--button);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196, 152, 110, 0.1);
+}
+
+.navbar-button {
+  background: linear-gradient(135deg, var(--button) 0%, var(--text-secondary) 100%);
+  border: 1px solid var(--button);
+  border-radius: 0 4px 4px 0;
+  color: var(--card-bg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar-button:hover {
+  box-shadow: 0 4px 12px rgba(196, 152, 110, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Cart Button - Luxury Gold */
+.cart-button {
+  background: linear-gradient(135deg, var(--button) 0%, var(--text-secondary) 100%);
+  color: var(--card-bg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-md);
+}
+
+.cart-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(196, 152, 110, 0.4);
+}
+
+.item-number {
+  background-color: #d4523b;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+/* Theme Toggle Button - Luxury */
+.theme-toggle {
+  background: linear-gradient(135deg, rgba(196, 152, 110, 0.2) 0%, rgba(196, 152, 110, 0.1) 100%);
+  border: 2px solid var(--button);
+  color: var(--button);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  background: linear-gradient(135deg, var(--button) 0%, var(--text-secondary) 100%);
+  border-color: var(--button);
+  color: var(--card-bg);
+  transform: rotate(15deg);
+  box-shadow: 0 4px 16px rgba(196, 152, 110, 0.3);
+}
+
+.theme-toggle:active {
+  transform: rotate(15deg) scale(0.95);
+}
+
+/* ===================================
+   BUTTONS - Luxury Gradient Design
+   =================================== */
+
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--button) 0%, var(--text-secondary) 100%);
+  color: var(--card-bg);
+  border: 1px solid var(--button);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(196, 152, 110, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--accent-card);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-card);
+}
+
+.btn-secondary:hover {
+  background: var(--button);
+  border-color: var(--button);
+  color: var(--card-bg);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #6b9e4a 0%, #5a8840 100%);
+  color: white;
+  border: 1px solid #6b9e4a;
+}
+
+.btn-success:hover {
+  box-shadow: 0 6px 20px rgba(107, 158, 74, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #c85a54 0%, #a84a46 100%);
+  color: white;
+  border: 1px solid #c85a54;
+}
+
+.btn-danger:hover {
+  box-shadow: 0 6px 20px rgba(200, 90, 84, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ===================================
+   PRODUCT CARDS - Minimalist Luxury
+   =================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: var(--spacing-lg) 0;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  transform: translateY(-6px);
+  border-color: var(--button);
+}
+
+.product-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background: var(--accent-card);
+  transition: filter 0.4s ease, transform 0.4s ease;
+  position: relative;
+}
+
+.product-card:hover .product-image {
+  filter: brightness(1.1) saturate(1.15);
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  min-height: 24px;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-name {
+  color: var(--button-hover);
+}
+
+.product-description {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  margin-bottom: 0.75rem;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-description {
+  color: var(--text-primary);
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-color);
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--button);
+}
+
+.btn-add-to-cart {
+  background: linear-gradient(135deg, var(--button) 0%, var(--text-secondary) 100%);
+  color: var(--card-bg);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(196, 152, 110, 0.2);
+}
+
+.product-card:hover .btn-add-to-cart {
+  box-shadow: 0 4px 12px rgba(196, 152, 110, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-add-to-cart:active {
+  transform: scale(0.96);
+}
+
+/* ===================================
+   FORMS & INPUTS - Luxury Design
+   =================================== */
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-control::placeholder {
+  color: var(--accent-muted);
+}
+
+.form-control:focus {
+  background-color: var(--base);
+  border-color: var(--button);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196, 152, 110, 0.1);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ===================================
+   CARDS & PANELS - Minimalist Luxury
+   =================================== */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  border-color: var(--button);
+}
+
+.card-title {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-md);
+}
+
+.card-body {
+  color: var(--text-primary);
+}
+
+/* ===================================
+   TABLES - Minimalist Luxury
+   =================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+thead {
+  background: linear-gradient(135deg, var(--card-border) 0%, var(--card-bg) 100%);
+}
+
+th {
+  padding: var(--spacing-md);
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+tbody tr:hover {
+  background-color: rgba(139, 101, 64, 0.3);
+  transition: all 0.2s ease;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===================================
+   FOOTER - Minimalist Luxury
+   =================================== */
+
+footer {
+  background-color: var(--base);
+  color: var(--text-primary);
+  padding: var(--spacing-xxl) 0 var(--spacing-lg);
+  margin-top: var(--spacing-xxl);
+  border-top: 1px solid var(--card-border);
+}
+
+.footer-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-section h5 {
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-section a {
+  color: var(--accent-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-section a:hover {
+  color: var(--button);
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--card-border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  margin-right: var(--spacing-sm);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--button);
+  color: var(--base);
+  transform: translateY(-3px);
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--accent-muted); }
+
+.bg-primary { background-color: var(--base); }
+.bg-secondary { background-color: var(--card-bg); }
+.bg-accent { background-color: var(--card-border); }
+
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+.p-1 { padding: var(--spacing-sm); }
+.p-2 { padding: var(--spacing-md); }
+.p-3 { padding: var(--spacing-lg); }
+
+.rounded { border-radius: 8px; }
+.rounded-sm { border-radius: 4px; }
+.rounded-lg { border-radius: 12px; }
+
+.shadow { box-shadow: var(--shadow-md); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .search-form {
+    max-width: 100%;
+    margin-top: var(--spacing-md);
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-image {
+    height: 120px;
+  }
+
+  .navbar-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .navbar-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .product-card {
+    border-radius: 6px;
+  }
+
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+  }
+
+  .navbar-brand {
+    font-size: var(--font-md);
+  }
+
+  .navbar-nav {
+    gap: 0.75rem;
+  }
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.3s ease;
+}
+
+/* ===================================
+   NAVBAR STYLING - Premium Design
+   =================================== */
+
+#navbar {
+  background-color: var(--base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.navbar-brand {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--button) !important;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  color: var(--button-hover) !important;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.navbar-nav a:hover {
+  color: var(--button);
+  background-color: rgba(196, 152, 110, 0.1);
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  max-width: 400px;
+}
+
+.navbar-input {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-input:focus {
+  background-color: var(--base);
+  border-color: var(--button);
+}
+
+.navbar-button {
+  background-color: var(--button);
+  border: 1px solid var(--button);
+  border-radius: 0 4px 4px 0;
+  color: var(--base);
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+  background-color: var(--button-hover);
+  border-color: var(--button-hover);
+}
+
+/* Cart Button */
+.cart-button {
+  background-color: var(--button);
+  color: var(--base);
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-button:hover {
+  background-color: var(--button-hover);
+  text-decoration: none;
+  color: var(--base);
+  transform: translateY(-2px);
+}
+
+.item-number {
+  background-color: #d9534f;
+  color: var(--text-primary);
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+/* Theme Toggle Button - Premium Styling */
+.theme-toggle {
+  background: linear-gradient(135deg, rgba(196, 152, 110, 0.15) 0%, rgba(196, 152, 110, 0.08) 100%);
+  border: 2px solid var(--button);
+  color: var(--button);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  background: linear-gradient(135deg, var(--button) 0%, var(--button-dark) 100%);
+  border-color: var(--button);
+  color: var(--base);
+  transform: rotate(20deg);
+  box-shadow: var(--shadow-glow);
+}
+
+.theme-toggle:active {
+  transform: rotate(20deg) scale(0.95);
+}
+
+/* Dark mode toggle button */
+html[data-theme="dark"] .theme-toggle {
+  background: rgba(196, 152, 110, 0.1);
+  border-color: var(--button);
+  color: var(--button);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  background: var(--button);
+  border-color: var(--button);
+  color: var(--base);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ===================================
+   FORMS & INPUTS - Premium Design
+   =================================== */
+
+.form-control {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 0.618rem 1.236rem;
+  border-radius: 8px;
+  font-size: var(--font-base);
+  font-family: inherit;
+  transition: all 0.2s ease;
+  line-height: 1.618;
+}
+
+.form-control::placeholder {
+  color: var(--accent-muted);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--button);
+  box-shadow: 0 0 0 4px rgba(196, 152, 110, 0.1);
+  background: var(--base);
+}
+
+/* ===================================
+   BUTTONS - Premium Design
+   =================================== */
+
+.btn {
+  padding: 0.618rem 1.618rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: var(--font-base);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  letter-spacing: 0.3px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--button) 0%, var(--button-dark) 100%);
+  color: var(--base);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--card-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--button);
+  color: var(--button);
+  background: var(--base);
+}
+
+.btn-success {
+  background: var(--success-color);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-danger:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================================
+   CARDS - Premium Design
+   =================================== */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+  border-color: var(--button);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--card-border) 0%, var(--card-bg) 100%);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+}
+
+.card-footer {
+  background: var(--card-bg);
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--card-border);
+}
+
+/* ===================================
+   CONTAINERS & LAYOUT
+   =================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.py-4 {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ===================================
+   TEXT UTILITIES
+   =================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+h1 { font-size: var(--font-xl); margin-bottom: var(--spacing-lg); }
+h2 { font-size: var(--font-lg); margin-bottom: var(--spacing-md); }
+h3 { font-size: var(--font-md); margin-bottom: var(--spacing-md); }
+
+p {
+  color: var(--text-primary);
+  line-height: 1.618;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--button);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--button-hover);
+  text-decoration: underline;
+}
+
+/* ===================================
+   TABLES
+   =================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: var(--card-border);
+  border-bottom: 2px solid var(--card-border);
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-primary);
+}
+
+tbody tr:hover {
+  background: rgba(139, 101, 64, 0.2);
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-muted { color: var(--accent-muted); }
+.text-success { color: #5cb85c; }
+.text-danger { color: #d9534f; }
+.text-warning { color: #f0ad4e; }
+.text-primary { color: var(--button); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mt-4 { margin-top: var(--spacing-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+.mb-4 { margin-bottom: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-sm); }
+.p-2 { padding: var(--spacing-md); }
+.p-3 { padding: var(--spacing-lg); }
+.p-4 { padding: var(--spacing-xl); }
+
+.rounded { border-radius: 8px; }
+.rounded-lg { border-radius: 12px; }
+.rounded-full { border-radius: 50%; }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.bg-primary { background: var(--base); }
+.bg-secondary { background: var(--card-bg); }
+.bg-tertiary { background: var(--card-border); }
+
+/* ===================================
+   FOOTER STYLING
+   =================================== */
+
+footer {
+  background-color: var(--base);
+  color: var(--text-primary);
+  padding: 40px 0 20px;
+  margin-top: 60px;
+  border-top: 1px solid var(--card-border);
+}
+
+.footer-section {
+  margin-bottom: 30px;
+}
+
+.footer-section h5 {
+  color: var(--button);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section a {
+  color: var(--accent-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-section a:hover {
+  color: var(--button);
+  transform: translateX(4px);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.fa {
+  padding: 12px;
+  font-size: 18px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.fa:hover {
+  opacity: 0.8;
+  transform: translateY(-3px);
+}
+
+.fa-facebook { background: #3B5998; }
+.fa-whatsapp { background: #25d366; }
+.fa-twitter { background: #55ACEE; }
+.fa-instagram { background: #E4405F; }
+
+/* ===================================
+   PRODUCT CARDS
+   =================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.product-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.12);
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--primary-color);
+}
+
+.product-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background: var(--bg-tertiary);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.product-card:hover .product-image {
+  filter: brightness(0.92) saturate(1.1);
+  transform: scale(1.08);
+}
+
+.product-info {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+  min-height: 26px;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-name {
+  color: var(--primary-color);
+}
+
+.product-description {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-description {
+  color: var(--text-primary);
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.btn-add-to-cart {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(13, 110, 253, 0.15);
+}
+
+.product-card:hover .btn-add-to-cart {
+  background: var(--secondary-color);
+  transform: translateX(4px) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(111, 66, 193, 0.3);
+}
+
+.btn-add-to-cart:active {
+  transform: scale(0.95);
+}
+
+/* ===================================
+   FORMS & INPUTS
+   =================================== */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* ===================================
+   BUTTONS
+   =================================== */
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #145c32;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   ALERTS & MESSAGES
+   =================================== */
+
+.alert {
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+  background-color: var(--bg-primary);
+}
+
+.alert-success {
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-danger {
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.alert-warning {
+  border-color: var(--warning-color);
+  color: #856404;
+}
+
+.alert-info {
+  border-color: var(--info-color);
+  color: var(--info-color);
+}
+
+html[data-theme="dark"] .alert-warning {
+  color: var(--warning-color);
+}
+
+/* ===================================
+   UTILITIES
+   =================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 30px;
+}
+
+.mb-4 {
+  margin-bottom: 30px;
+}
+
+.py-4 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .search-form {
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .product-image {
+    height: 120px;
+  }
+
+  .navbar-input {
+    padding: 8px 12px;
+  }
+
+  .navbar-button {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-card {
+    border-radius: 6px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

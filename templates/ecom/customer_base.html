@@ -1,0 +1,143 @@
+<html>
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple E-commerce</title>
+  
+  <!-- Preload Theme to Prevent White Flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  
+  <!-- Modern CSS & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+  
+  <!-- jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body style="transition: background-color 0.3s ease, color 0.3s ease;">
+
+<nav id="navbar">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 30px; flex: 1;">
+        <a href="/" class="navbar-brand">Simple Ecommerce</a>
+        
+        <form action="/search" method="get" class="search-form" style="display: none;" id="desktop-search">
+          <input class="navbar-input" type="search" placeholder="Search for products..." name="query" id="query">
+          <button class="navbar-button" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="/my-order" class="navbar-nav">Orders</a>
+        <a href="/my-profile" class="navbar-nav">Profile</a>
+        <a href="/cart" class="cart-button">
+          <i class="fa fa-shopping-cart"></i> Cart
+          {% if product_count_in_cart %}<span class="item-number">{{ product_count_in_cart }}</span>{% endif %}
+        </a>
+        <a href="/logout" class="navbar-nav">Logout</a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode"></button>
+      </div>
+    </div>
+
+    <!-- Mobile Search -->
+    <form action="/search" method="get" style="margin-top: 12px; display: none;" id="mobile-search">
+      <div style="display: flex; gap: 0;">
+        <input class="navbar-input" type="search" placeholder="Search products..." name="query" id="query-mobile">
+        <button class="navbar-button" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
+</nav>
+
+<!-- content start-->
+{% block content %}
+{% endblock content %}
+<!-- content end-->
+
+<footer>
+  <div class="container py-4">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+      <div class="footer-section">
+        <h5 style="display: flex; align-items: center; gap: 8px;"><i class="fa fa-shopping-bag"></i> Shop</h5>
+        <ul>
+          <li><a href="/"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> All Products</a></li>
+          <li><a href="/search?query=featured"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> Featured</a></li>
+          <li><a href="/aboutus"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> About Store</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h5 style="display: flex; align-items: center; gap: 8px;"><i class="fa fa-link"></i> Support</h5>
+        <ul>
+          <li><a href="/contactus"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> Contact Us</a></li>
+          <li><a href="/send-feedback"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> Send Feedback</a></li>
+          <li><a href="/view-feedback"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> See Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h5 style="display: flex; align-items: center; gap: 8px;"><i class="fa fa-user"></i> Account</h5>
+        <ul>
+          <li><a href="/my-profile"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> My Profile</a></li>
+          <li><a href="/my-order"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> My Orders</a></li>
+          <li><a href="/edit-profile"><i class="fa fa-chevron-right" style="font-size: 10px;"></i> Edit Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h5 style="display: flex; align-items: center; gap: 8px;"><i class="fa fa-share-alt"></i> Follow</h5>
+        <div class="social-icons">
+          <a href="#" class="fa fa-facebook" title="Facebook"></a>
+          <a href="#" class="fa fa-twitter" title="Twitter"></a>
+          <a href="#" class="fa fa-instagram" title="Instagram"></a>
+          <a href="#" class="fa fa-whatsapp" title="WhatsApp"></a>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-color); padding-top: 20px; text-align: center;">
+      <p style="color: var(--text-secondary); margin: 0; font-size: 14px;">
+        &copy; {% now "Y" %} Simple Ecommerce. All rights reserved. | Developed with <i class="fa fa-heart" style="color: #dc3545;"></i> by Rohit Saud
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="{% static 'js/theme.js' %}"></script>
+<script>
+$(document).ready(function(){
+  // Mobile responsive search visibility
+  var isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    $('#desktop-search').hide();
+    $('#mobile-search').show();
+  } else {
+    $('#desktop-search').show();
+    $('#mobile-search').hide();
+  }
+  
+  window.addEventListener('resize', function() {
+    isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      $('#desktop-search').hide();
+      $('#mobile-search').show();
+    } else {
+      $('#desktop-search').show();
+      $('#mobile-search').hide();
+    }
+  });
+});
+</script>
+
+</body>
+</html>

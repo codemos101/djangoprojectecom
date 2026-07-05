@@ -1,0 +1,52 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container" style="padding: 40px 0;">
+  <!-- Welcome Section -->
+  <div style="text-align: center; margin-bottom: 50px;">
+    <h1 style="font-size: 42px; font-weight: 700; margin-bottom: 15px; color: var(--text-primary);">Welcome, {{ request.user.first_name|default:request.user.username }}!</h1>
+    <p style="font-size: 18px; color: var(--text-secondary);">Explore our exclusive collection of products</p>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="product-grid">
+    {% if products %}
+      {% for p in products %}
+      <div class="product-card">
+        <img src="{{ p.product_image.url }}" alt="{{ p.name }}" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">{{ p.name }}</h3>
+          <p class="product-description">{{ p.description }}</p>
+          <div class="product-footer">
+            <span class="product-price">${{ p.price }}</span>
+            <a href="{% url 'add-to-cart' p.id %}" class="btn-add-to-cart">
+              <i class="fa fa-shopping-cart"></i> Add
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+        <h3 style="color: var(--text-primary); font-size: 24px;">No Products Found</h3>
+        <p style="color: var(--text-secondary); margin-top: 10px;">Try a different search or check back later.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% if messages %}
+  {% for message in messages %}
+    <div style="position: fixed; top: 100px; right: 20px; background: var(--success-color); color: white; padding: 16px 24px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999;">
+      {{ message }}
+      <script>
+        setTimeout(function() {
+          document.querySelectorAll('[style*="position: fixed"]')[0]?.remove();
+        }, 3000);
+      </script>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,146 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style>
+    a:link, a:visited {
+      text-decoration: none;
+    }
+
+    h6.panel-title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #a94442; /* bootstrap danger color */
+      margin: 20px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      margin-top: 60px;
+      max-width: 1000px;
+    }
+
+    .panel {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table {
+      font-size: 0.95rem;
+    }
+
+    thead > tr > th {
+      background-color: #d9534f; /* bootstrap danger */
+      color: #fff;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    tbody > tr:hover {
+      background-color: #f9e6e6;
+      cursor: pointer;
+    }
+
+    tbody > tr > td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    tbody > tr > td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: #333;
+    }
+
+    img.customer-pic {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #d9534f;
+    }
+
+    .btn-xs {
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      margin: 0 2px;
+    }
+
+    /* Responsive fix */
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px 10px;
+        max-width: 100%;
+      }
+      table {
+        font-size: 0.9rem;
+      }
+      img.customer-pic {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h6 class="panel-title">Total Customers</h6>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" id="dev-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in customers %}
+          <tr>
+            <td>{{ c.get_name }}</td>
+            <td>
+              {% if c.profile_pic_url %}
+                <img src="{{ c.profile_pic_url }}" alt="Profile photo of {{ c.get_name }}" class="customer-pic">
+              {% else %}
+                <img src="{% static 'images/default_profile.png' %}" alt="Default profile icon for {{ c.get_name }}" class="customer-pic">
+              {% endif %}
+            </td>
+            <td>{{ c.mobile }}</td>
+            <td>{{ c.address }}</td>
+            <td>
+              <a class="btn btn-primary btn-xs" href="{% url 'update-customer' c.id %}" title="Edit {{ c.get_name }}">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+              </a>
+              <a class="btn btn-danger btn-xs" href="{% url 'delete-customer' c.id %}" title="Delete {{ c.get_name }}" onclick="return confirm('Are you sure you want to delete {{ c.get_name }}?');">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5" style="text-align:center; font-style: italic; color: #777;">No customers found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+{% include 'ecom/admin_dashboard_cards.html' %}
+<br><br><br><br><br>
+
+<hr><hr>
+
+<div class="container">
+
+  <div class="panel panel-danger">
+    <div class="panel-heading" style="text-align:center;">
+      <h6 class="panel-title">Recent Booking</h6>
+    </div>
+
+    <table class="table table-hover table-bordered" id="dev-table">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Contact</th>
+          <th>Shipment Address</th>
+          <th>Product</th>
+          <th>Image</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.customer.user.first_name }} {{ order.customer.user.last_name }}</td>
+        <td>{{ order.customer.mobile }}</td>
+        <td>{{ order.address }}</td>
+
+        <td>{{ order.product.name }}</td>
+
+        <td>
+          {% if order.product.product_image %}
+            <img src="{{ order.product.product_image.url }}" alt="Product Image" height="40px" width="40px" />
+          {% else %}
+            <img src="{% static 'images/default_product.png' %}" alt="No Image" height="40px" width="40px" />
+          {% endif %}
+        </td>
+
+        <td>
+          {% if order.status == 'Pending' %}
+            <span class="label label-info">{{ order.status }}</span>
+          {% elif order.status == 'Delivered' %}
+            <span class="label label-success">{{ order.status }}</span>
+          {% elif order.status == 'Out for Delivery' %}
+            <span class="label label-warning">{{ order.status }}</span>
+          {% else %}
+            <span class="label label-primary">{{ order.status }}</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6" style="text-align:center;">No orders found.</td></tr>
+      {% endfor %}
+
+    </table>
+
+  </div>
+</div>
+
+{% endblock content %}
